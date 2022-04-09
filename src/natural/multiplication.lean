@@ -1,4 +1,4 @@
-import natural.definition natural.add
+import natural.definition natural.addition
 
 namespace N
 
@@ -35,6 +35,50 @@ begin
   rw add_assoc,
   rw add_comm d a,
   rw ← add_assoc,
+end
+
+theorem mul_left_distrib_add (a b c : N) : a * (b + c) = a * b + a * c :=
+begin
+  induction a with d hd,
+  rw zero_eq_zero,
+  repeat {rw zero_mul},
+  rw add_zero,
+  repeat {rw succ_mul},
+  rw hd,
+  rw add_assoc (d * b) b (d * c + c),
+  rw ← add_assoc b (d * c) c,
+  rw add_comm b (d * c),
+  repeat {rw ← add_assoc},
+end
+
+theorem mul_assoc (a b c : N) : (a * b) * c = a * (b * c) :=
+begin
+  induction c with d hd,
+  rw zero_eq_zero,
+  repeat {rw mul_zero},
+  rw mul_succ,
+  rw hd,
+  rw mul_succ,
+  rw mul_left_distrib_add,
+end
+
+theorem mul_comm (a b : N) : a * b = b * a :=
+begin
+  induction b with d hd,
+  rw zero_eq_zero,
+  rw mul_zero,
+  rw zero_mul,
+  rw mul_succ,
+  rw succ_mul,
+  rw hd,
+end
+
+theorem mul_right_distrib_add (a b c : N) : (a + b) * c = a * c + b * c :=
+begin
+  rw mul_comm (a + b),
+  rw mul_left_distrib_add,
+  rw mul_comm c a,
+  rw mul_comm c b,
 end
 
 end N
