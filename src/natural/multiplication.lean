@@ -81,4 +81,25 @@ begin
   rw mul_comm c b,
 end
 
+lemma mul_one (a : N) : a * 1 = a := 
+begin
+  rw ← one_eq_one,
+  rw one,
+  rw mul_succ,
+  rw mul_zero,
+  rw zero_add,
+end
+
+lemma one_mul (a : N) : 1 * a = a :=
+begin
+  rw mul_comm,
+  rw mul_one,
+end
+
+theorem mul_one_idemp (a : N) : a * 1 * 1 = a :=
+begin
+  rw mul_one,
+  rw mul_one,
+end
+
 end N
