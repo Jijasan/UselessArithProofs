@@ -43,4 +43,25 @@ begin
   rw hd,
 end
 
+theorem add_comm (a b : N) : a + b = b + a :=
+begin 
+  induction b with d hd,
+  rw zero_eq_zero,
+  rw add_zero,
+  rw zero_add,
+  rw succ_add,
+  rw add_succ,
+  rw hd,
+end
+
+lemma succ_eq_inc (a : N) : succ a = a + 1 :=
+begin
+  rw ← add_zero a,
+  rw ← add_succ,
+  rw add_assoc,
+  rw zero_add,
+  rw ← one_eq_one,
+  rw one,
+end
+
 end N

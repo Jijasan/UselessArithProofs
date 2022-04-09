@@ -11,6 +11,7 @@ theorem zero_eq_zero : zero = 0 := rfl
 def one : N := succ 0
 
 instance : has_one N := ⟨ N.one ⟩ 
+theorem one_eq_one : one = 1 := rfl
 
 theorem succ_eq (a b : N) : succ a = succ b -> a = b :=
 begin
