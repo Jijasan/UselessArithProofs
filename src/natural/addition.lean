@@ -8,6 +8,9 @@ def add : N -> N -> N
 
 instance : has_add N := ⟨ N.add ⟩ 
 
+def two := succ 1
+theorem two_eq_two : two = 2 := rfl
+
 lemma add_zero (a : N) : a + 0 = a := rfl
 lemma add_succ (a b : N) : a + succ b = succ (a + b) := rfl
 

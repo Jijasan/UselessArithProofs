@@ -96,9 +96,22 @@ begin
   rw mul_one,
 end
 
-theorem mul_one_idemp (a : N) : a * 1 * 1 = a :=
+lemma mul_two (a : N) : a * 2 = a + a :=
 begin
+  rw ← two_eq_two,
+  rw two,
+  rw mul_succ,
   rw mul_one,
+end
+
+lemma two_mul (a : N) : 2 * a = a + a :=
+begin
+  rw mul_comm,
+  rw mul_two,
+end
+
+theorem mul_one_idemp (a : N) : a * 1 * 1 = a * 1 :=
+begin
   rw mul_one,
 end
 
