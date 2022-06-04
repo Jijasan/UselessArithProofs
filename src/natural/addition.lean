@@ -6,6 +6,10 @@ def add : N -> N -> N
 | a 0 := a
 | a (succ b) := succ (add a b)
 
+def pred : N -> N
+| 0 := 0
+| (succ a) := a
+
 instance : has_add N := ⟨ N.add ⟩ 
 
 def two := succ 1
