@@ -16,11 +16,6 @@ begin
   rw h,
 end
 
-lemma zero_neq_succ (a : N): ¬(0 = succ a) := 
-begin
-  trivial,
-end
-
 lemma succ_neq_zero (a : N): ¬(succ a = 0) := 
 begin
   intro h,
