@@ -13,6 +13,8 @@ def one : N := succ 0
 instance : has_one N := ⟨ N.one ⟩ 
 theorem one_eq_one : one = 1 := rfl
 
+theorem eq (a : N) : a = a := rfl
+
 theorem succ_eq (a b : N) : (succ a = succ b) -> (a = b) :=
 begin
   intro h,

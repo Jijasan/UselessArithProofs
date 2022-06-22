@@ -9,9 +9,15 @@ inductive Seq (α : Type u)
 
 namespace Seq
 
-def add : Seq N -> Seq N -> Seq N
-| (Nil N) a := a
-| a (Nil N) := a
-| (Cons a as) (Cons b bs) := Cons (a + b) (add as bs)
+def append : Seq N -> Seq N -> Seq N
+| Nil a := a
+| a Nil := a
+| (Cons a as) b := Cons a (append as b)
+
+inductive NatSeq (α : Type u)
+| Cons : (N -> α) -> NatSeq
+
+def add : NatSeq N -> NatSeq N -> NatSeq N
+| (NatSeq.Cons f) (NatSeq.Cons g) := NatSeq.Cons (λ x, f x + g x)
 
 end Seq
