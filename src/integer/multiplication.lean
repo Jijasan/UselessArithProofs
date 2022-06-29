@@ -14,4 +14,5 @@ instance : has_mul Z := ⟨ mul ⟩
 
 lemma pos_mul_pos (a b : N) : mul (pos a) (pos b) = pos (a * b) := by rw [mul]
 
+
 end Z
