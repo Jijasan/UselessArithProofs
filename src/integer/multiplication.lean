@@ -10,4 +10,8 @@ def mul : Z -> Z -> Z
 | (pos a) (neg_succ b) := neg_succ (N.pred (a * (b + 1)))
 | (neg_succ a) (neg_succ b) := neg_succ (N.pred ((a + 1) * (b + 1)))
 
+instance : has_mul Z := ⟨ mul ⟩ 
+
+lemma pos_mul_pos (a b : N) : mul (pos a) (pos b) = pos (a * b) := by rw [mul]
+
 end Z
