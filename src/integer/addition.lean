@@ -1295,4 +1295,19 @@ begin
   rw N.add_assoc,
 end
 
+theorem add_comm (a b : Z): a + b = b + a :=
+begin
+  cases a,
+  cases b,
+  repeat {rw pos_add_pos},
+  rw N.add_comm,
+  rw pos_add_neg,
+  rw neg_add_pos,
+  cases b,
+  rw neg_add_pos,
+  rw pos_add_neg,
+  repeat {rw neg_add_neg},
+  rw N.add_comm a b,
+end
+
 end Z

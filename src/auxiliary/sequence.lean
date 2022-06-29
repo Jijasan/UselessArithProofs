@@ -17,7 +17,7 @@ def append : Seq N -> Seq N -> Seq N
 inductive NatSeq (α : Type u)
 | Cons : (N -> α) -> NatSeq
 
-def add : NatSeq N -> NatSeq N -> NatSeq N
+def add (α : Type u) [has_add α] : NatSeq α -> NatSeq α -> NatSeq α
 | (NatSeq.Cons f) (NatSeq.Cons g) := NatSeq.Cons (λ x, f x + g x)
 
 end Seq

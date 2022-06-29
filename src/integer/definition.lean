@@ -15,6 +15,8 @@ def one : Z := pos (N.succ 0)
 instance : has_one Z := ⟨ Z.one ⟩ 
 theorem one_eq_one : one = 1 := rfl
 
+lemma reduce_one : 1 = pos (N.succ 0) := rfl
+
 theorem eq_comm (a b : Z) : (a = b) -> (b = a) :=
 begin
   intro h,
