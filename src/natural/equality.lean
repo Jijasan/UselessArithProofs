@@ -37,8 +37,9 @@ begin
   exact zero_neq_succ a,
 end
 
-theorem eq_add (a b d : N) : (a + d = b + d) -> (a = b) :=
+theorem eq_add (a b d : N) : (a + d = b + d) <-> (a = b) :=
 begin
+  split,
   induction d with d hd,
   rw zero_eq_zero,
   repeat {rw add_zero},
@@ -47,14 +48,30 @@ begin
   intro h,
   repeat {rw add_succ at h},
   exact hd (succ_eq (a + d) (b + d) h),
+  induction d with d hd,
+  rw zero_eq_zero,
+  repeat {rw add_zero},
+  intro h,
+  exact h,
+  intro h,
+  repeat {rw add_succ},
+  rw hd h,
 end
 
-theorem add_eq (a b d : N) : (d + a = d + b) -> (a = b) :=
+theorem add_eq (a b d : N) : (d + a = d + b) <-> (a = b) :=
 begin
+  have q := eq_add a b d,
+  cases q,
+  split,
   intro h,
   rw add_comm d a at h,
   rw add_comm d b at h,
-  exact eq_add a b d h,
+  exact q_mp h,
+  intro h,
+  have t := q_mpr h,
+  rw add_comm a d at t,
+  rw add_comm b d at t,
+  exact t,
 end
 
 theorem zero_sum (a b : N) : (a + b = 0) -> (a = 0 ∧ b = 0) :=
