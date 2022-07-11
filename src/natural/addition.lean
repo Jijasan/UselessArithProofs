@@ -1,4 +1,5 @@
 import natural.definition
+import algebra.order.ring
 
 namespace N
 
@@ -60,6 +61,16 @@ begin
   rw add_succ,
   rw hd,
 end
+
+def nsmul : ℕ -> N -> N
+| 0 b := 0
+| (nat.succ a) b := b + nsmul a b
+
+lemma nsmul_zero (b : N) : nsmul 0 b = 0 := rfl
+lemma nsmul_succ (a : ℕ) (b : N) : nsmul (nat.succ a) b = b + nsmul a b := rfl
+
+@[simp]
+instance : add_comm_monoid N := ⟨ add, add_assoc, 0, zero_add, add_zero, nsmul, nsmul_zero, nsmul_succ, add_comm ⟩ 
 
 lemma succ_eq_inc (a : N) : succ a = a + 1 :=
 begin
