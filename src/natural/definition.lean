@@ -13,6 +13,10 @@ def one : N := succ 0
 instance : has_one N := ⟨ N.one ⟩ 
 theorem one_eq_one : one = 1 := rfl
 
+def nat_cast : ℕ -> N
+| 0 := 0
+| (nat.succ a) := succ (nat_cast a)
+
 def to_N : N -> ℕ 
 | 0 := 0
 | (N.succ a) := (to_N a) + 1
